@@ -1,69 +1,185 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: #7bdaf3;
   font-family: "Poppins", sans-serif;
   display: flex;
   flex-wrap: wrap;
-  margin: 0;
-  padding-top: 3rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5rem 2rem;
+  min-height: 100vh;
+  transition: background 0.5s ease;
 }
 
+/*  Add Note Button */
 .add {
   position: fixed;
-  top: 1rem;
-  right: 1rem;
-  background-color: #9ec862;
-  color: #fff;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: #4caf50;
+  color: white;
   border: none;
-  border-radius: 3px;
-  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 10;
 }
 
+.add:hover {
+  transform: scale(1.05);
+}
+
+/*Theme Toggle Button */
+.theme-toggle {
+  position: fixed;
+  top: 1.5rem;
+  left: 1.5rem;
+  background-color: #ffffffcc;
+  color: #333;
+  border: none;
+  border-radius: 30px;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* ========== Note Card ========== */
 .note {
   background-color: #fff;
-  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.1);
-  margin: 30px 20px;
-  height: 400px;
-  width: 400px;
-  overflow-y: scroll;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  border-radius: 15px;
+  width: 340px;
+  height: 420px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.note:hover {
+  transform: translateY(-5px);
 }
 
 .note .tools {
-  background-color: #9ec862;
+  background-color: #4caf50;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
   display: flex;
   justify-content: flex-end;
-  padding: 0.5rem;
+  padding: 0.6rem;
 }
 
 .note .tools button {
-  background-color: transparent;
+  background: transparent;
   border: none;
   color: #fff;
   cursor: pointer;
-  font-size: 1rem;
-  margin-left: 0.5rem;
+  font-size: 1.1rem;
+  margin-left: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.note .tools button:hover {
+  color: #c8f7c5;
 }
 
 .note textarea {
-  outline: none;
+  flex: 1;
   font-family: inherit;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   border: none;
-  height: 400px;
-  width: 100%;
-  padding: 20px;
+  resize: none;
+  padding: 1.2rem;
+  outline: none;
+  background-color: #f9f9f9;
+  color: #333;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .main {
-  padding: 20px;
+  flex: 1;
+  padding: 1.2rem;
+  overflow-y: auto;
+  background-color: #fdfdfd;
+  color: #333;
+  font-size: 1rem;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
 }
 
 .hidden {
   display: none;
+}
+
+.note textarea::-webkit-scrollbar,
+.note .main::-webkit-scrollbar {
+  width: 6px;
+}
+
+.note textarea::-webkit-scrollbar-thumb,
+.note .main::-webkit-scrollbar-thumb {
+  background-color: #b0bec5;
+  border-radius: 3px;
+}
+
+/*Pink Theme*/
+.pink-theme body {
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+}
+
+.pink-theme .note .tools {
+  background-color: #ff8fab;
+}
+
+.pink-theme .add {
+  background-color: #ff5d8f;
+}
+
+.pink-theme .add:hover {
+  background-color: #ff4081;
+}
+
+/*Blue Theme */
+.blue-theme body {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.blue-theme .note .tools {
+  background-color: #3949ab;
+}
+
+.blue-theme .add {
+  background-color: #1e88e5;
+}
+
+.blue-theme .add:hover {
+  background-color: #1565c0;
+}
+
+
+@media (max-width: 768px) {
+  .add, .theme-toggle {
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .note {
+    width: 90%;
+    height: 380px;
+  }
 }
